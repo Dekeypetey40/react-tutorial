@@ -1,20 +1,40 @@
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-import './App.css'
+function Square() {
+  const [value, setValue] = useState(null);
+  function handleClick() {
+    setValue("X");
+  }
+  return (
+    <button className="square" onClick={handleClick}>
+      {value}
+    </button>
+  );
+}
 
-export function App() {
+Square.propTypes = {
+  value: PropTypes.string.isRequired,
+};
+
+export default function Board() {
   return (
     <>
-      <h1 className="center" style={{ color: 'red' }}></h1>
-      <h1>Hello World</h1>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className="board-row">
+        <Square />
+        <Square />
+        <Square />
+      </div>
     </>
-  )
+  );
 }
-createRoot(root).render(React.createElement("p", {}, "Hello World"));
-
-
-import React from "react";
-import {createRoot} from "react-dom/client";
-
-const element = React.createElement("h1", {className:"title"}, "Online Supermarket");
-const root = document.querySelector("#react-root");
-createRoot(root).render(element);
